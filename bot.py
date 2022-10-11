@@ -40,9 +40,11 @@ def get_connection():
     return HTTPSConnection("discordapp.com", 443)
 
 
-def send_message(conn, channel_id, message_data):
+ def send_message(conn, channel_id, message_data):
     try:
-        conn.request("POST", f"/api/v6/channels/{channel_id}/messages", message_data, header_data)
+#        conn.request("POST", f"/api/v6/channels/{channel_id}/messages", message_data, header_data)
+# API UPDATE.. NEEDS TO BE LOOKED INTO //
+        conn.request("POST", f"/api/v10/channels/{channel_id}/messages", message_data, header_data)
         resp = conn.getresponse()
 
         if 199 < resp.status < 300:
